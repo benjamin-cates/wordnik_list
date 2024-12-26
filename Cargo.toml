@@ -5,7 +5,6 @@ edition = "2021"
 authors = ["Benjamin Cates"]
 rust-version = "1.70"
 description="Quick, local library to check valid words within the Wordnik word list"
-license="MIT"
 license-file="LICENSE"
 readme="README.md"
 repository="https://github.com/benjamin-cates/wordnik_list"
