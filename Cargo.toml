@@ -1,0 +1,18 @@
+[package]
+name = "wordnik_list"
+version = "0.1.0"
+edition = "2021"
+authors = ["Benjamin Cates"]
+rust-version = "1.70"
+description="Quick, local library to check valid words within the Wordnik word list"
+license="MIT"
+license-file="LICENSE"
+readme="README.md"
+repository="https://github.com/benjamin-cates/wordnik_list"
+keywords=["gamedev","words","wordle","scrabble"]
+categories=["game-development","text-processing"]
+
+[badges.maintenance]
+status = "passively-maintained"
+
+
