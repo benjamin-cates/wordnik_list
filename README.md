@@ -43,3 +43,18 @@ use wordnik_list::word_iterator;
 let vec: Vec<&str> = word_iterator().filter(|word| word.len() == 2).collect();
 println!("List of every 2-letter word: {:?}", vec);
 ```
+
+
+## Changelog
+
+### Version 0.2.0
+- Added new function: `word_iterator_by_len`
+- Removed guarantee that iterators returned by word_iterator and word_range will be in alphabetical order.
+- Improved internal implementation: replaced BTreeMap with a combined string per word length.
+    - Runtime memory usage reduced by about 50%.
+    - Performance penalty at first call removed.
+    - Word lookup time improved
+
+### Version 0.1.0
+- Initial release with 3 functions: `word_iterator`, `word_exists`, and `word_range`.
+- Based on BTreeMap implementation that is computed at first call
