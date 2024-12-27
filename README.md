@@ -47,6 +47,9 @@ println!("List of every 2-letter word: {:?}", vec);
 
 ## Changelog
 
+### Version 0.2.1
+- Add the [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) flag.
+
 ### Version 0.2.0
 - Added new function: `word_iterator_by_len`
 - Removed guarantee that iterators returned by word_iterator and word_range will be in alphabetical order.

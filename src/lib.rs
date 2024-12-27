@@ -32,6 +32,8 @@
 //! println!("List of every 2-letter word: {:?}", vec);
 //! ```
 
+#![no_std]
+
 const LEN_MAPS: [&'static str; 29] = [
     "",
     "",
@@ -119,7 +121,7 @@ pub fn word_range<'a>(
 ) -> impl Iterator<Item = &'static str> + use<'a> {
     let mut len = 1;
     let mut index = 0;
-    std::iter::from_fn(move || {
+    core::iter::from_fn(move || {
         if len > 28 {
             return None;
         }
@@ -152,7 +154,7 @@ pub fn word_range<'a>(
 pub fn word_iterator() -> impl Iterator<Item = &'static str> {
     let mut len = 1;
     let mut index = 0;
-    std::iter::from_fn(move || {
+    core::iter::from_fn(move || {
         if len > 28 {
             return None;
         }
@@ -180,7 +182,7 @@ pub fn word_iterator() -> impl Iterator<Item = &'static str> {
 /// ```
 pub fn word_iterator_by_len(len: usize) -> impl Iterator<Item = &'static str> {
     let mut list = *LEN_MAPS.get(len).unwrap_or(&"");
-    std::iter::from_fn(move || {
+    core::iter::from_fn(move || {
         if list.len() == 0 {
             return None;
         }
@@ -192,13 +194,15 @@ pub fn word_iterator_by_len(len: usize) -> impl Iterator<Item = &'static str> {
 
 #[cfg(test)]
 mod tests {
+    #[cfg(test)]
+    extern crate std;
     use crate::{str_binary_search, word_exists, word_iterator, word_iterator_by_len, word_range};
 
     #[test]
     fn test_size() {
         let now = std::time::Instant::now();
         assert_eq!(word_iterator().count(), 198420);
-        println!("Count all took: {:?}", now.elapsed());
+        std::println!("Count all took: {:?}", now.elapsed());
     }
 
     #[test]
@@ -240,12 +244,12 @@ mod tests {
 
     #[test]
     fn randomized_reading() {
-        let word_vec: Vec<&'static str> = word_iterator().collect();
+        let word_vec: std::vec::Vec<&'static str> = word_iterator().collect();
         let now = std::time::Instant::now();
         for i in 0..100000 {
             assert!(word_exists(word_vec[(i * 80) % word_vec.len()]));
         }
-        println!("Random iteration lookup: {:?}", now.elapsed().div_f32(100000.0));
+        std::println!("Random iteration lookup: {:?}", now.elapsed().div_f32(100000.0));
     }
     #[test]
     fn test_str_binary_search() {
